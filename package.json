@@ -1,0 +1,28 @@
+{
+  "name": "r-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadFeiz/r-examples.git"
+  },
+  "dependencies": {
+    "aio-button": "5.2.0",
+    "aio-table": "^7.0.3",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammadFeiz/r-examples/issues"
+  },
+  "homepage": "https://github.com/mohammadFeiz/r-examples#readme"
+}
