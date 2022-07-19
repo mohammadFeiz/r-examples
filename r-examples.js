@@ -48,7 +48,7 @@ export default class RExamples extends Component{
   getProps(){
     let obj = {};
     for(let prop in this.props){
-      if(prop !== 'examples'){
+      if(prop !== 'examples' && prop !== 'headerHTML'){
         obj[prop] = this.props[prop]  
       }
     }
@@ -56,7 +56,7 @@ export default class RExamples extends Component{
   }
   render(){
     let {activeExample,examples,view} = this.state;
-    let {props} = this.props;
+    let {headerHTML} = this.props;
     let example = this.getExample(activeExample);
     let ActiveComponent = this.getComponent(example)
 
@@ -64,6 +64,8 @@ export default class RExamples extends Component{
     return (
       <div className='r-examples'>
         <div className='r-examples-header'>
+          {!!headerHTML && headerHTML}
+          <div style={{flex:1}}></div>
           <Button
             type='select'
             style={{height:36,background:'dodgerblue',color:'#fff',borderRadius:5}}

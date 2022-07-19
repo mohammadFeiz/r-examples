@@ -88,7 +88,7 @@ class RExamples extends _react.Component {
     let obj = {};
 
     for (let prop in this.props) {
-      if (prop !== 'examples') {
+      if (prop !== 'examples' && prop !== 'headerHTML') {
         obj[prop] = this.props[prop];
       }
     }
@@ -103,7 +103,7 @@ class RExamples extends _react.Component {
       view
     } = this.state;
     let {
-      props
+      headerHTML
     } = this.props;
     let example = this.getExample(activeExample);
     let ActiveComponent = this.getComponent(example);
@@ -112,7 +112,11 @@ class RExamples extends _react.Component {
       className: "r-examples"
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "r-examples-header"
-    }, /*#__PURE__*/_react.default.createElement(_aioButton.default, {
+    }, !!headerHTML && headerHTML, /*#__PURE__*/_react.default.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }), /*#__PURE__*/_react.default.createElement(_aioButton.default, {
       type: "select",
       style: {
         height: 36,
