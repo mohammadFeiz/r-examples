@@ -82,9 +82,9 @@ export default class RExamples extends Component{
           <div className='r-examples-tree'>
             <Table
               model={examples}
-              getRowChilds='childs'
+              getRowChilds='row.childs'
               columns={[
-                {title:'Examples',getValue:'title',treeMode:true,cellAttrs:(row)=>{
+                {title:'Examples',getValue:'row.title',treeMode:true,cellAttrs:(row)=>{
                   let {activeExample} = this.state;
                   let a = row._nestedIndex.toString()
                   let b = activeExample.toString();

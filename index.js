@@ -144,10 +144,10 @@ class RExamples extends _react.Component {
       className: "r-examples-tree"
     }, /*#__PURE__*/_react.default.createElement(_aioTable.default, {
       model: examples,
-      getRowChilds: "childs",
+      getRowChilds: "row.childs",
       columns: [{
         title: 'Examples',
-        getValue: 'title',
+        getValue: 'row.title',
         treeMode: true,
         cellAttrs: row => {
           let {
