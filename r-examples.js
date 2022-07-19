@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React,{Component,useEffect} from "react";
 import "./index.css";
 import Button from 'aio-button';
 import Table from 'aio-table';
@@ -45,11 +45,22 @@ export default class RExamples extends Component{
     }
     return example.component();
   }
+  getProps(){
+    let obj = {};
+    for(let prop in this.props){
+      if(prop !== 'examples'){
+        obj[prop] = this.props[prop]  
+      }
+    }
+    return obj
+  }
   render(){
     let {activeExample,examples,view} = this.state;
+    let {props} = this.props;
     let example = this.getExample(activeExample);
     let ActiveComponent = this.getComponent(example)
-    let Wrapper = ActiveComponent === null?null:<ActiveComponent/>
+
+    let Wrapper = ActiveComponent === null?null:<ActiveComponent {...this.getProps()}/>
     return (
       <div className='r-examples'>
         <div className='r-examples-header'>
@@ -90,7 +101,7 @@ export default class RExamples extends Component{
           </div>
           {view === 'preview' && Wrapper}
           {view === 'code' && <Code code={example.code} language='javascript'/>}  
-          {view === 'model' && <Code code={modelPreview} language='javascript'/>}  
+          {view === 'model' && <Code code={typeof example.model === 'string'?example.model:JSON.stringify(example.model)} language='javascript'/>}  
         </div>
       </div>
     );

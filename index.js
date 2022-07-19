@@ -84,15 +84,30 @@ class RExamples extends _react.Component {
     return example.component();
   }
 
+  getProps() {
+    let obj = {};
+
+    for (let prop in this.props) {
+      if (prop !== 'examples') {
+        obj[prop] = this.props[prop];
+      }
+    }
+
+    return obj;
+  }
+
   render() {
     let {
       activeExample,
       examples,
       view
     } = this.state;
+    let {
+      props
+    } = this.props;
     let example = this.getExample(activeExample);
     let ActiveComponent = this.getComponent(example);
-    let Wrapper = ActiveComponent === null ? null : /*#__PURE__*/_react.default.createElement(ActiveComponent, null);
+    let Wrapper = ActiveComponent === null ? null : /*#__PURE__*/_react.default.createElement(ActiveComponent, this.getProps());
     return /*#__PURE__*/_react.default.createElement("div", {
       className: "r-examples"
     }, /*#__PURE__*/_react.default.createElement("div", {
@@ -160,7 +175,7 @@ class RExamples extends _react.Component {
       code: example.code,
       language: "javascript"
     }), view === 'model' && /*#__PURE__*/_react.default.createElement(Code, {
-      code: modelPreview,
+      code: typeof example.model === 'string' ? example.model : JSON.stringify(example.model),
       language: "javascript"
     })));
   }
@@ -173,7 +188,7 @@ function Code({
   code,
   language
 }) {
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     _prismjs.default.highlightAll();
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {

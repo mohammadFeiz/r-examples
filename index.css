@@ -26,8 +26,8 @@
   flex-shrink: 0;
 }
 .aio-table{
-  flex:1;
-  height:100%;
+  height:100% !important;
+  flex:1 !important;
 }
 .r-examples-body .aio-table-cell.active{
   background: lightblue;
