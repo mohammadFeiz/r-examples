@@ -1,4 +1,4 @@
-import React,{Component,useEffect} from "react";
+import React,{Component} from "react";
 import "./index.css";
 import Button from 'aio-button';
 import Table from 'aio-table';
@@ -109,16 +109,18 @@ export default class RExamples extends Component{
     );
   }
 }
-function Code({ code, language }) {
-  useEffect(() => {
+class Code extends Component{
+  componentDidMount(){
     Prism.highlightAll();
-  }, []);
-  return (
-    <div className="Code" style={{overflowY:'auto',width:'100%',height:'100%'}}>
-      <pre>
-        <code className={`language-${language}`}>{code}</code>
-      </pre>
-    </div>
-  );
+  }
+  render(){
+    let { code, language } = this.props;
+    return (
+      <div className="Code" style={{overflowY:'auto',width:'100%',height:'100%'}}>
+        <pre>
+          <code className={`language-${language}`}>{code}</code>
+        </pre>
+      </div>
+    );  
+  }
 }
-

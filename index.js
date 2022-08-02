@@ -188,21 +188,26 @@ class RExamples extends _react.Component {
 
 exports.default = RExamples;
 
-function Code({
-  code,
-  language
-}) {
-  (0, _react.useEffect)(() => {
+class Code extends _react.Component {
+  componentDidMount() {
     _prismjs.default.highlightAll();
-  }, []);
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Code",
-    style: {
-      overflowY: 'auto',
-      width: '100%',
-      height: '100%'
-    }
-  }, /*#__PURE__*/_react.default.createElement("pre", null, /*#__PURE__*/_react.default.createElement("code", {
-    className: `language-${language}`
-  }, code)));
+  }
+
+  render() {
+    let {
+      code,
+      language
+    } = this.props;
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "Code",
+      style: {
+        overflowY: 'auto',
+        width: '100%',
+        height: '100%'
+      }
+    }, /*#__PURE__*/_react.default.createElement("pre", null, /*#__PURE__*/_react.default.createElement("code", {
+      className: `language-${language}`
+    }, code)));
+  }
+
 }
